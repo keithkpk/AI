@@ -1,12 +1,15 @@
 ﻿Param(
-    [Parameter(Mandatory = $true)][string] $configFile,
+    [Parameter(Mandatory = $true)][string] $appSettingsFile,
+    [Parameter(Mandatory = $true)][string] $skillConfigFile,
     [Parameter(Mandatory = $true)][string] $manifestUrl,
     [Parameter(Mandatory = $true)][string] $dispatchName,
     [string] $language = "en-us",
     [string] $luisFolder,
     [string] $dispatchFolder,
     [string] $outFolder = $(Get-Location),
-    [string] $lgOutFolder = $(Join-Path $outFolder Services)
+    [string] $lgOutFolder = $(Join-Path $outFolder Services),
+    [string] $botName,
+    [string] $resourceGroup = $botName
 )
 
 # Set folder defaults
@@ -22,14 +25,13 @@ Write-Host "Loading skill manifest ..."
 $manifest = Invoke-WebRequest -Uri $manifestUrl | ConvertFrom-Json
 
 Write-Host "Initializing skill.config ..."
-if (Test-Path $configFile) {
-    $skillConfig = Get-Content $configFile | ConvertFrom-Json
+if (Test-Path $skillConfigFile) {
+    $skillConfig = Get-Content $skillConfigFile | ConvertFrom-Json
 
     if ($skillConfig) {
         if ($skillConfig.skills) {
             if ($skillConfig.skills.Id -eq $manifest.Id) {
                 Write-Host "$($manifest.Id) is already registered."
-                Break
             }
             else {
                 Write-Host "Registering $($manifest.Id) ..."
@@ -44,11 +46,40 @@ if (Test-Path $configFile) {
     }
 }
 
+# if ($manifest.authenticationConnections.Count -gt 0) {
+#     if (Test-Path $appSettingsFile) {
+#         Write-Host "Setting up authentication connections ..."
+#         if (Test-Path $appSettingsFile) {
+#             if ($manifest.authenticationConnections.serviceProviderId -contains "Azure Active Directory v2") {
+#                 $appSettings = Get-Content $appSettingsFile | ConvertFrom-Json
+#                 $oauthConnection = $manifest.authenticationConnections | Where-Object { $_.serviceProviderId -eq "Azure Active Directory v2" }
+#                 $scopesArr = $oauthConnection.scopes -split ','
+#                 $scopes = $scopesArr -join ' '
+#                 az bot authsetting create `
+#                     --resource-group $botName `
+#                     --name $resourceGroup `
+#                     --setting-name $oauthConnection.Id `
+#                     --client-id $appSettings.microsoftAppId `
+#                     --client-secret $appSettings.microsoftAppPassword `
+#                     --service Aadv2 `
+#                     --parameters clientId="$($appSettings.microsoftAppId)" clientSecret="$($appSettings.microsoftAppPassword)" tenantId=common `
+#                     --provider-scope-string "$($scopes)"
+#             }
+#         }
+#         else {
+#             Write-Warning "Cannot automatically provision skill OAuth Connections. You will need to set up your OAuth Connections manually."
+#         }
+#     }
+#     else {
+#         Write-Warning "Could not file $($appSettingsFile). You will need to set up your OAuth Connections manually."
+#     }
+# }
+
 if (-not $skillConfig) {
     $skillConfig = @{ skills = @($manifest) }
 }
 
-$skillConfig | ConvertTo-Json -depth 100 | Out-File $configFile
+$skillConfig | ConvertTo-Json -depth 100 | Out-File $skillConfigFile
 
 Write-Host "Getting intents for dispatch ..."
 $dictionary = @{ }
@@ -71,7 +102,6 @@ foreach ($action in $manifest.actions) {
 }
 
 Write-Host "Adding skill to Dispatch ..."
-$intentName = $manifest.Id
 foreach ($luisApp in $dictionary.Keys) {
     $intents = $dictionary[$luisApp]
     $luFile = Get-ChildItem -Path $(Join-Path $luisFolder "$($luisApp).lu") `
@@ -94,7 +124,8 @@ foreach ($luisApp in $dictionary.Keys) {
     dispatch add `
         --type file `
         --filePath $luisFile `
-        --intentName $intentName `
+        --intentName $manifest.Id `
+        --includedIntents $intents `
         --dataFolder $dispatchFolder `
         --dispatch $(Join-Path $dispatchFolder "$($dispatchName).dispatch")
 }

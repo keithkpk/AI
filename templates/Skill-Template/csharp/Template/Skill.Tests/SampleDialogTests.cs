@@ -1,12 +1,4 @@
-﻿using Microsoft.Bot.Schema;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using $ext_safeprojectname$.Responses.Sample;
-using $safeprojectname$.Utterances;
-using System;
-using System.Collections.Specialized;
-using System.Threading.Tasks;
-
-namespace $safeprojectname$
+﻿namespace $safeprojectname$
 {
     [TestClass]
     public class SampleDialogTests : SkillTestBase

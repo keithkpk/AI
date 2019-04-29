@@ -8,7 +8,6 @@ using Luis;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Solutions.Responses;
-using Microsoft.Bot.Builder.Solutions.Telemetry;
 using Microsoft.Bot.Schema;
 using Microsoft.Recognizers.Text.DataTypes.TimexExpression;
 using Microsoft.Recognizers.Text.DateTime;
@@ -94,7 +93,7 @@ namespace RestaurantBooking.Dialogs
             await sc.Context.SendActivityAsync(trace);
 
             // log exception
-            TelemetryClient.TrackExceptionEx(ex, sc.Context.Activity, sc.ActiveDialog?.Id);
+            TelemetryClient.TrackException(ex, new Dictionary<string, string> { { nameof(sc.ActiveDialog), sc.ActiveDialog?.Id } });
 
             // send error message to bot user
             await sc.Context.SendActivityAsync(ResponseManager.GetResponse(RestaurantBookingSharedResponses.ErrorMessage));

@@ -80,6 +80,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AdaptiveCards" Version="1.1.2" />
     <PackageReference Include="Google.Apis.Calendar.v3" Version="1.35.2.1354" />
     <PackageReference Include="Google.Apis.People.v1" Version="1.25.0.830" />
     <PackageReference Include="HtmlAgilityPack" Version="1.8.10" />
@@ -87,21 +88,22 @@
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.5.1" />
     <PackageReference Include="Microsoft.ApplicationInsights.DependencyCollector" Version="2.8.1" />
     <PackageReference Include="Microsoft.AspNetCore.All" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.2" />
     <PackageReference Include="Microsoft.Azure.CognitiveServices.Language" Version="1.0.1-preview" />
     <PackageReference Include="Microsoft.Azure.CognitiveServices.Search.NewsSearch" Version="1.2.0" />
-    <PackageReference Include="Microsoft.Bot.Builder" Version="4.3.1" />
-    <PackageReference Include="Microsoft.Bot.Builder.AI.Luis" Version="4.3.1" />
-    <PackageReference Include="Microsoft.Bot.Builder.AI.QnA" Version="4.3.1" />
-    <PackageReference Include="Microsoft.Bot.Builder.ApplicationInsights" Version="4.3.1" />
-    <PackageReference Include="Microsoft.Bot.Builder.Azure" Version="4.3.1" />
-    <PackageReference Include="Microsoft.Bot.Builder.Dialogs" Version="4.3.1" />
-    <PackageReference Include="Microsoft.Bot.Builder.Integration.ApplicationInsights.Core" Version="4.3.1" />
-    <PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="4.3.1" />
-    <PackageReference Include="Microsoft.Bot.Builder.Skills" Version="4.4.0-preview-19" />
-    <PackageReference Include="Microsoft.Bot.Builder.TemplateManager" Version="4.3.1" />
-    <PackageReference Include="Microsoft.Bot.Configuration" Version="4.3.1" />
-    <PackageReference Include="Microsoft.Bot.Connector" Version="4.3.1" />
-    <PackageReference Include="Microsoft.Bot.Schema" Version="4.3.1" />
+    <PackageReference Include="Microsoft.Bot.Builder" Version="4.4.0-RC2" />
+    <PackageReference Include="Microsoft.Bot.Builder.AI.Luis" Version="4.4.0-RC2" />
+    <PackageReference Include="Microsoft.Bot.Builder.AI.QnA" Version="4.4.0-RC2" />
+    <PackageReference Include="Microsoft.Bot.Builder.ApplicationInsights" Version="4.4.0-RC2" />
+    <PackageReference Include="Microsoft.Bot.Builder.Azure" Version="4.4.0-RC2" />
+    <PackageReference Include="Microsoft.Bot.Builder.Dialogs" Version="4.4.0-RC2" />
+    <PackageReference Include="Microsoft.Bot.Builder.Integration.ApplicationInsights.Core" Version="4.4.0-RC2" />
+    <PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="4.4.0-RC2" />
+    <!--<PackageReference Include="Microsoft.Bot.Builder.Skills" Version="4.4.0-preview-19" />-->
+    <PackageReference Include="Microsoft.Bot.Builder.TemplateManager" Version="4.4.0-RC2" />
+    <PackageReference Include="Microsoft.Bot.Configuration" Version="4.4.0-RC2" />
+    <PackageReference Include="Microsoft.Bot.Connector" Version="4.4.0-RC2" />
+    <PackageReference Include="Microsoft.Bot.Schema" Version="4.4.0-RC2" />
     <PackageReference Include="Microsoft.Graph" Version="1.10.0" />
     <PackageReference Include="AsyncUsageAnalyzers" Version="1.0.0-alpha003" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Recognizers.Text.DataTypes.TimexExpression" Version="1.1.4" />
@@ -181,6 +183,15 @@
     <EmbeddedResource Include="Responses\UpdateEvent\UpdateEventResponses.json" />
     <EmbeddedResource Include="Responses\UpdateEvent\UpdateEventResponses.zh.json" />
     <EmbeddedResource Include="Utilities\WindowsIanaMapping" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Bot.Builder.Skills">
+      <HintPath>..\..\..\..\..\lib\csharp\microsoft.bot.builder.skills\Microsoft.Bot.Builder.Skills\bin\Debug\netstandard2.0\Microsoft.Bot.Builder.Skills.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bot.Builder.Solutions">
+      <HintPath>..\..\..\..\..\lib\csharp\microsoft.bot.builder.skills\Microsoft.Bot.Builder.Skills\bin\Debug\netstandard2.0\Microsoft.Bot.Builder.Solutions.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

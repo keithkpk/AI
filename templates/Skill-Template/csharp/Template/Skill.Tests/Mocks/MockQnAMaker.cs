@@ -1,11 +1,4 @@
-﻿using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.AI.QnA;
-using Microsoft.Bot.Builder.Solutions.Telemetry;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace $safeprojectname$.Mocks
+﻿namespace $safeprojectname$.Mocks
 {
     public class MockQnAMaker : ITelemetryQnAMaker
     {

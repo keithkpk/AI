@@ -1,13 +1,4 @@
-﻿using $safeprojectname$.Utterances;
-using Microsoft.Bot.Schema;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Threading.Tasks;
-using System;
-using $ext_safeprojectname$.Responses.Sample;
-using System.Collections.Specialized;
-using $ext_safeprojectname$.Responses.Main;
-
-namespace $safeprojectname$
+﻿namespace $safeprojectname$
 {
     [TestClass]
     public class InterruptionTests : SkillTestBase

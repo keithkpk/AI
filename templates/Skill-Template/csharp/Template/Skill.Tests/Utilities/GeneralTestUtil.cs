@@ -1,10 +1,4 @@
-﻿using $safeprojectname$.Mocks;
-using $safeprojectname$.Utterances;
-using Luis;
-using Microsoft.Bot.Builder;
-using System.Collections.Generic;
-
-namespace $safeprojectname$.Utilities
+﻿namespace $safeprojectname$.Utilities
 {
     public class GeneralTestUtil
     {

@@ -19,7 +19,6 @@ using Microsoft.Bot.Builder.Skills;
 using Microsoft.Bot.Builder.Solutions.Authentication;
 using Microsoft.Bot.Builder.Solutions.Resources;
 using Microsoft.Bot.Builder.Solutions.Responses;
-using Microsoft.Bot.Builder.Solutions.Telemetry;
 using Microsoft.Bot.Builder.Solutions.Util;
 using Microsoft.Bot.Schema;
 using Microsoft.Graph;
@@ -53,7 +52,7 @@ namespace EmailSkill.Dialogs
                 throw new Exception("You must configure an authentication connection in your bot file before using this component.");
             }
 
-            AddDialog(new MultiProviderAuthDialog(ResponseManager, settings.OAuthConnections));
+            AddDialog(new MultiProviderAuthDialog(settings.OAuthConnections));
             AddDialog(new TextPrompt(Actions.Prompt));
             AddDialog(new ConfirmPrompt(Actions.TakeFurtherAction, null, Culture.English) { Style = ListStyle.SuggestedAction });
         }
@@ -928,7 +927,7 @@ namespace EmailSkill.Dialogs
 
             // get messages for current page
             var filteredResult = new List<Message>();
-            int importantEmailCount = 0;
+            var importantEmailCount = 0;
             for (var i = 0; i < result.Count; i++)
             {
                 if (result[i].Importance.HasValue && result[i].Importance.Value == Importance.High)
@@ -977,8 +976,8 @@ namespace EmailSkill.Dialogs
                     SenderIcon = senderIcon
                 };
 
-                bool isImportant = message.Importance != null && message.Importance == Importance.High;
-                bool hasAttachment = message.HasAttachments.HasValue && message.HasAttachments.Value;
+                var isImportant = message.Importance != null && message.Importance == Importance.High;
+                var hasAttachment = message.HasAttachments.HasValue && message.HasAttachments.Value;
                 if (isImportant && hasAttachment)
                 {
                     emailCard.AdditionalIcon1 = AdaptiveCardHelper.ImportantIcon;
@@ -1143,9 +1142,9 @@ namespace EmailSkill.Dialogs
                     throw new Exception("No recipient!");
                 }
 
-                int size = Math.Min(AdaptiveCardHelper.MaxDisplayRecipientNum, recipients.Count());
+                var size = Math.Min(AdaptiveCardHelper.MaxDisplayRecipientNum, recipients.Count());
 
-                for (int i = 0; i < size; i++)
+                for (var i = 0; i < size; i++)
                 {
                     var photoUrl = await GetUserPhotoUrlAsync(context, recipients.ElementAt(i).EmailAddress);
 
@@ -1171,7 +1170,7 @@ namespace EmailSkill.Dialogs
 
                 if (recipients.Count() > AdaptiveCardHelper.MaxDisplayRecipientNum)
                 {
-                    int additionalNumber = recipients.Count() - AdaptiveCardHelper.MaxDisplayRecipientNum - 1;
+                    var additionalNumber = recipients.Count() - AdaptiveCardHelper.MaxDisplayRecipientNum - 1;
                     data.AdditionalRecipientNumber = additionalNumber.ToString();
                 }
 
@@ -1458,7 +1457,7 @@ namespace EmailSkill.Dialogs
             await sc.Context.SendActivityAsync(trace);
 
             // log exception
-            TelemetryClient.TrackExceptionEx(ex, sc.Context.Activity, sc.ActiveDialog?.Id);
+            TelemetryClient.TrackException(ex, new Dictionary<string, string> { { nameof(sc.ActiveDialog), sc.ActiveDialog?.Id } });
 
             // send error message to bot user
             await sc.Context.SendActivityAsync(ResponseManager.GetResponse(EmailSharedResponses.EmailErrorMessage));
@@ -1475,7 +1474,7 @@ namespace EmailSkill.Dialogs
             await sc.Context.SendActivityAsync(trace);
 
             // log exception
-            TelemetryClient.TrackExceptionEx(ex, sc.Context.Activity, sc.ActiveDialog?.Id);
+            TelemetryClient.TrackException(ex, new Dictionary<string, string> { { nameof(sc.ActiveDialog), sc.ActiveDialog?.Id } });
 
             // send error message to bot user
             if (ex.ExceptionType == SkillExceptionType.APIAccessDenied)

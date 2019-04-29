@@ -9,8 +9,6 @@ using Microsoft.Bot.Builder.Solutions.Responses;
 using Microsoft.Bot.Builder.Solutions.Telemetry;
 using Microsoft.Bot.Connector.Authentication;
 using Microsoft.Bot.Schema;
-using $safeprojectname$.Responses.Shared;
-using $safeprojectname$.Services;
 using System.Globalization;
 
 namespace $safeprojectname$.Bots

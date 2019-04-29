@@ -1,12 +1,4 @@
-﻿using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Dialogs;
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Bot.Builder.Solutions.Telemetry;
-
-namespace $safeprojectname$.Mocks
+﻿namespace $safeprojectname$.Mocks
 {
     public class MockLuisRecognizer : ITelemetryLuisRecognizer
     {

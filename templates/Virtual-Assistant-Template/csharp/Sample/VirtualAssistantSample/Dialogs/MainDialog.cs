@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Luis;
 using Microsoft.Bot.Builder;
+using Microsoft.Bot.Builder.AI.QnA;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Skills;
 using Microsoft.Bot.Builder.Solutions;
@@ -195,7 +196,7 @@ namespace VirtualAssistantSample.Dialogs
                 }
                 else
                 {
-                    var answers = await qnaService.GetAnswersAsync(dc.Context);
+                    var answers = await (qnaService as QnAMaker).GetAnswersAsync(dc.Context);
 
                     if (answers != null && answers.Count() > 0)
                     {
@@ -213,7 +214,7 @@ namespace VirtualAssistantSample.Dialogs
                 }
                 else
                 {
-                    var answers = await qnaService.GetAnswersAsync(dc.Context);
+                    var answers = await (qnaService as QnAMaker).GetAnswersAsync(dc.Context);
 
                     if (answers != null && answers.Count() > 0)
                     {

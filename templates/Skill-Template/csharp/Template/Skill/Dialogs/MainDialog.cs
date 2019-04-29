@@ -13,10 +13,6 @@ using Microsoft.Bot.Builder.Skills;
 using Microsoft.Bot.Builder.Solutions.Dialogs;
 using Microsoft.Bot.Builder.Solutions.Responses;
 using Microsoft.Bot.Schema;
-using $safeprojectname$.Models;
-using $safeprojectname$.Responses.Main;
-using $safeprojectname$.Services;
-using $safeprojectname$.Responses.Shared;
 
 namespace $safeprojectname$.Dialogs
 {

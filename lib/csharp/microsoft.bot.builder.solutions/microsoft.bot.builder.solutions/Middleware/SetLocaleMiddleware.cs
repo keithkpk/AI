@@ -4,7 +4,6 @@
 using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Bot.Builder;
 
 namespace Microsoft.Bot.Builder.Solutions.Middleware
 {

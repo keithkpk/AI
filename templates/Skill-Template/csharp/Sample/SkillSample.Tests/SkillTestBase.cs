@@ -9,14 +9,12 @@ using SkillSample.Bots;
 using SkillSample.Dialogs;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Bot.Connector.Authentication;
-using Microsoft.Bot.Builder.Solutions;
-using Microsoft.Bot.Builder.Solutions.Testing;
-using Microsoft.Bot.Builder.Solutions.Responses;
 using SkillSample.Responses.Main;
 using SkillSample.Responses.Shared;
 using SkillSample.Responses.Sample;
-using Microsoft.Bot.Builder.Solutions.Middleware;
-using SkillSample.Tests.Mocks;
+using Microsoft.Bot.Builder.Solutions.Testing;
+using Microsoft.Bot.Builder.Solutions;
+using Microsoft.Bot.Builder.Solutions.Responses;
 
 namespace SkillSample.Tests
 {

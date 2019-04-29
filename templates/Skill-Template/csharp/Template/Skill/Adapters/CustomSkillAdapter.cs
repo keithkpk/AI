@@ -5,8 +5,6 @@ using Microsoft.Bot.Builder.Solutions.Middleware;
 using Microsoft.Bot.Builder.Solutions.Responses;
 using Microsoft.Bot.Builder.Solutions.Telemetry;
 using Microsoft.Bot.Schema;
-using $safeprojectname$.Responses.Shared;
-using $safeprojectname$.Services;
 using System.Globalization;
 using Microsoft.Bot.Builder.Dialogs;
 

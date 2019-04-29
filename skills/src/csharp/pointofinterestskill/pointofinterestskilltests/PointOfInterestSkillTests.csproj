@@ -41,4 +41,13 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Microsoft.Bot.Builder.Skills">
+      <HintPath>..\..\..\..\..\lib\csharp\microsoft.bot.builder.skills\Microsoft.Bot.Builder.Skills\bin\Debug\netstandard2.0\Microsoft.Bot.Builder.Skills.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bot.Builder.Solutions">
+      <HintPath>..\..\..\..\..\lib\csharp\microsoft.bot.builder.skills\Microsoft.Bot.Builder.Skills\bin\Debug\netstandard2.0\Microsoft.Bot.Builder.Solutions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

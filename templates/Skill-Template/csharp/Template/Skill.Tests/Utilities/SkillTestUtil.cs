@@ -1,10 +1,4 @@
-﻿using Luis;
-using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Solutions.Testing.Mocks;
-using $safeprojectname$.Utterances;
-using System.Collections.Generic;
-
-namespace $safeprojectname$.Utilities
+﻿namespace $safeprojectname$.Utilities
 {
     public class SkillTestUtil
     {

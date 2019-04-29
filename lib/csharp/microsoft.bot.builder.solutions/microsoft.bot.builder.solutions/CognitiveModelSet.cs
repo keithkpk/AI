@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Microsoft.Bot.Builder.Solutions.Telemetry;
+using Microsoft.Bot.Builder.AI.QnA;
 
 namespace Microsoft.Bot.Builder.Solutions
 {

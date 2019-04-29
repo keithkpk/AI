@@ -1,15 +1,4 @@
-﻿using AdaptiveCards;
-using Microsoft.Bot.Schema;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using $ext_safeprojectname$.Responses.Main;
-using $ext_safeprojectname$.Responses.Shared;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace $safeprojectname$
+﻿namespace $safeprojectname$
 {
     [TestClass]
     public class LocalizationTests : SkillTestBase

@@ -4,7 +4,6 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Solutions.Util;
 
 namespace Microsoft.Bot.Builder.Solutions.Proactive

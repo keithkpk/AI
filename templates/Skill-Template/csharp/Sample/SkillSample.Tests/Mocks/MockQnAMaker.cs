@@ -1,6 +1,5 @@
 ﻿using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.AI.QnA;
-using Microsoft.Bot.Builder.Solutions.Telemetry;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -21,6 +20,8 @@ namespace SkillSample.Tests.Mocks
 
         public bool LogPersonalInformation => throw new NotImplementedException();
 
+        public IBotTelemetryClient TelemetryClient => throw new NotImplementedException();
+
         public void RegisterAnswers(Dictionary<string, QueryResult[]> utterances)
         {
             foreach (var utterance in utterances)
@@ -35,6 +36,11 @@ namespace SkillSample.Tests.Mocks
 
             var mockResult = TestAnswers.GetValueOrDefault(text, DefaultAnswer);
             return Task.FromResult(mockResult);
+        }
+
+        public Task<QueryResult[]> GetAnswersAsync(ITurnContext turnContext, QnAMakerOptions options, Dictionary<string, string> telemetryProperties, Dictionary<string, double> telemetryMetrics = null)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -14,18 +14,11 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Bot.Builder.ApplicationInsights;
 using Microsoft.ApplicationInsights;
 using Microsoft.Bot.Builder.BotFramework;
-using $safeprojectname$.Bots;
 using Microsoft.AspNetCore.Mvc;
-using $safeprojectname$.Dialogs;
-using $safeprojectname$.Services;
 using Microsoft.Bot.Builder.Solutions.TaskExtensions;
 using Microsoft.Bot.Builder.Solutions.Responses;
 using System.Linq;
-using $safeprojectname$.Responses.Main;
-using $safeprojectname$.Responses.Shared;
-using $safeprojectname$.Responses.Sample;
 using Microsoft.Bot.Builder.Skills;
-using $safeprojectname$.Adapters;
 using Microsoft.Bot.Builder.Solutions;
 
 namespace $safeprojectname$

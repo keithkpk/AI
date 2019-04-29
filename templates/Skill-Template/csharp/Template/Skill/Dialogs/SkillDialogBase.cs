@@ -9,10 +9,6 @@ using Microsoft.Bot.Builder.Solutions.Authentication;
 using Microsoft.Bot.Builder.Solutions.Telemetry;
 using Microsoft.Bot.Builder.Solutions.Responses;
 using Microsoft.Bot.Builder.Solutions.Util;
-using $safeprojectname$.Models;
-using $safeprojectname$.Services;
-using Luis;
-using $safeprojectname$.Responses.Shared;
 using Microsoft.Bot.Builder.Skills;
 
 namespace $safeprojectname$.Dialogs
